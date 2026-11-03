@@ -1,0 +1,51 @@
+[0;36m
+╔══════════════════════════════════════════════════════════╗
+║   🏦  Agentic AI Loan Approval System                    ║
+║   Multi-Agent Architecture with LangGraph + FastMCP      ║
+╚══════════════════════════════════════════════════════════╝
+[0m
+[0;32m[17:11:05] API key found: sk-r7Xl3ECSaZA4...[0m
+[0;32m[17:11:09] Starting FastAPI backend on port 8000...[0m
+[0;32m[17:11:09] FastAPI PID: 38032[0m
+[0;32m[17:11:09] Waiting for FastAPI to be ready...[0m
+[0;32m[17:11:14] FastAPI ready! ✅[0m
+[0;32m[17:11:14] Starting Streamlit UI on port 8501...[0m
+[0;32m[17:11:14] Streamlit PID: 38079[0m
+
+[0;32m╔══════════════════════════════════════════════════════════╗
+║   ✅ All services are running!                            ║
+║                                                          ║
+║   🌐 Streamlit UI:  http://localhost:8501                ║
+║   ⚡ FastAPI Docs:  http://localhost:8000/docs           ║
+║   🏥 Health Check:  http://localhost:8000/health         ║
+║                                                          ║
+║   Press Ctrl+C to stop all services                      ║
+╚══════════════════════════════════════════════════════════╝[0m
+
+
+[1;33m[17:11:47] Stopping all services...[0m
+[0;32m[17:11:47] All services stopped.[0m
+[0;31m[17:11:52] ERROR: FastAPI crashed! Check logs/api.log[0m
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/home/ubuntu/.local/lib/python3.12/site-packages/mcp/server/stdio.py", line 205, in stdout_writer
+    |     await stdout.flush()
+    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_core/_fileio.py", line 140, in flush
+    |     return await to_thread.run_sync(self._fp.flush)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.12/dist-packages/anyio/to_thread.py", line 63, in run_sync
+    |     return await get_async_backend().run_sync_in_worker_thread(
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+    |     return await future
+    |            ^^^^^^^^^^^^
+    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 1002, in run
+    |     result = context.run(func, *args)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^
+    | BrokenPipeError: [Errno 32] Broken pipe
+    +------------------------------------
+
+[1;33m[17:11:52] Stopping all services...[0m
+[0;32m[17:11:53] All services stopped.[0m
