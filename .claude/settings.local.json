@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile /home/ubuntu/loan_approval_system/agents/base_agent.py)",
+      "Bash(pkill -9 -f \"uvicorn\\\\|streamlit\\\\|python3.*api\\\\|python3.*ui\")",
+      "Bash(kill -9 83594)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Remove unnecessary async wrapper that was causing issues *)"
+    ]
+  }
+}

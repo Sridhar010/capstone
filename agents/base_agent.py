@@ -49,14 +49,18 @@ class BaseAgent:
             args=[self.mcp_server_script],
         )
 
-        async with stdio_client(server_params) as (read, write):
-            async with ClientSession(read, write) as session:
-                await session.initialize()
-                tools = await self._discover_tools(session)
-                logger.debug("[%s] Discovered %d tools", self.agent_name, len(tools))
-                result = await self._agent_loop(session, user_prompt, tools)
-                logger.info("[%s] Agent completed successfully", self.agent_name)
-                return result
+        try:
+            async with stdio_client(server_params) as (read, write):
+                async with ClientSession(read, write) as session:
+                    await session.initialize()
+                    tools = await self._discover_tools(session)
+                    logger.debug("[%s] Discovered %d tools", self.agent_name, len(tools))
+                    result = await self._agent_loop(session, user_prompt, tools)
+                    logger.info("[%s] Agent completed successfully", self.agent_name)
+                    return result
+        except Exception as exc:
+            logger.error("[%s] Agent failed with exception: %s", self.agent_name, exc)
+            raise
 
     async def _discover_tools(self, session: ClientSession) -> list[dict]:
         tools_response = await session.list_tools()

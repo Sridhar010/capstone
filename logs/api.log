@@ -1,20 +1,9 @@
-INFO:     Started server process [38032]
-INFO:     Waiting for application startup.
-2026-11-03 17:11:14 [INFO] api.main: Initialising LangGraph orchestrator...
-2026-11-03 17:11:14 [INFO] api.main: Loan Approval API ready
-INFO:     Application startup complete.
-INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     127.0.0.1:46138 - "GET /health HTTP/1.1" 200 OK
-2026-11-03 17:11:17 [INFO] api.main: Received application APP-2ED1EA9F for applicant STRONG001
-INFO:     127.0.0.1:46150 - "POST /api/v1/loans HTTP/1.1" 202 Accepted
-2026-11-03 17:11:17 [INFO] orchestrator.graph: [APP-2ED1EA9F] Starting LangGraph workflow
-2026-11-03 17:11:17 [INFO] orchestrator.graph: [APP-2ED1EA9F] Entering applicant_profile_node
-2026-11-03 17:11:17 [INFO] agents.base_agent: [ApplicantProfileAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/applicant_db_server.py
-2026-11-03 17:11:17 [INFO] api.main: Received application APP-980C9A7A for applicant RISKY002
-INFO:     127.0.0.1:46162 - "POST /api/v1/loans HTTP/1.1" 202 Accepted
-2026-11-03 17:11:17 [INFO] orchestrator.graph: [APP-980C9A7A] Starting LangGraph workflow
-2026-11-03 17:11:17 [INFO] orchestrator.graph: [APP-980C9A7A] Entering applicant_profile_node
-2026-11-03 17:11:17 [INFO] agents.base_agent: [ApplicantProfileAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/applicant_db_server.py
+2026-11-04 16:06:28 [INFO] api.main: Initialising LangGraph orchestrator...
+2026-11-04 16:06:28 [INFO] api.main: Loan Approval API ready
+2026-11-04 16:06:29 [INFO] api.main: Received application APP-D28F9F06 for applicant GOOD_APP
+2026-11-04 16:06:29 [INFO] orchestrator.graph: [APP-D28F9F06] Starting LangGraph workflow
+2026-11-04 16:06:29 [INFO] orchestrator.graph: [APP-D28F9F06] Entering applicant_profile_node
+2026-11-04 16:06:29 [INFO] agents.base_agent: [ApplicantProfileAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/applicant_db_server.py
 
 
 ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -38,52 +27,14 @@ INFO:     127.0.0.1:46162 - "POST /api/v1/loans HTTP/1.1" 202 Accepted
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 
-[11/03/26 17:11:20] INFO     Starting MCP server 'ApplicantDB'  transport.py:241
+[11/04/26 16:06:34] INFO     Starting MCP server 'ApplicantDB'  transport.py:241
                              with transport 'stdio'                             
-
-
-╭──────────────────────────────────────────────────────────────────────────────╮
-│                                                                              │
-│                                                                              │
-│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
-│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
-│                                                                              │
-│                                                                              │
-│                                                                              │
-│                                FastMCP 4.1.5                                 │
-│                            https://gofastmcp.com                             │
-│                                                                              │
-│                  🖥  Server:      ApplicantDB, 4.1.5                          │
-│                  🚀 Deploy free: https://horizon.prefect.io                  │
-│                                                                              │
-╰──────────────────────────────────────────────────────────────────────────────╯
-╭──────────────────────────────────────────────────────────────────────────────╮
-│                          🎉 Update available: 4.1.6                          │
-│                      Run: pip install --upgrade fastmcp                      │
-╰──────────────────────────────────────────────────────────────────────────────╯
-
-
-[11/03/26 17:11:20] INFO     Starting MCP server 'ApplicantDB'  transport.py:241
-                             with transport 'stdio'                             
-2026-11-03 17:11:24 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
-2026-11-03 17:11:27 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
-2026-11-03 17:11:36 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
-2026-11-03 17:11:36 [INFO] agents.base_agent: [ApplicantProfileAgent] Agent completed successfully
-2026-11-03 17:11:45 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
-2026-11-03 17:11:45 [INFO] agents.base_agent: [ApplicantProfileAgent] Agent completed successfully
-2026-11-03 17:11:46 [INFO] orchestrator.graph: [APP-2ED1EA9F] Profile analysis complete: income_stability=1.00
-2026-11-03 17:11:46 [INFO] orchestrator.graph: [APP-2ED1EA9F] Entering financial_risk_node
-2026-11-03 17:11:46 [INFO] agents.base_agent: [FinancialRiskAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/risk_rules_server.py
-2026-11-03 17:11:46 [INFO] orchestrator.graph: [APP-980C9A7A] Profile analysis complete: income_stability=0.35
-2026-11-03 17:11:46 [INFO] orchestrator.graph: [APP-980C9A7A] Entering financial_risk_node
-2026-11-03 17:11:46 [INFO] agents.base_agent: [FinancialRiskAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/risk_rules_server.py
-INFO:     127.0.0.1:58652 - "GET /api/v1/loans/APP-2ED1EA9F HTTP/1.1" 200 OK
-INFO:     127.0.0.1:58654 - "GET /api/v1/loans/APP-980C9A7A HTTP/1.1" 200 OK
-INFO:     Shutting down
-INFO:     Waiting for application shutdown.
-2026-11-03 17:11:48 [INFO] api.main: API shutting down
-INFO:     Application shutdown complete.
-INFO:     Finished server process [38032]
+2026-11-04 16:06:38 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:06:47 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:06:47 [INFO] agents.base_agent: [ApplicantProfileAgent] Agent completed successfully
+2026-11-04 16:06:47 [INFO] orchestrator.graph: [APP-D28F9F06] Profile analysis complete: income_stability=1.00
+2026-11-04 16:06:47 [INFO] orchestrator.graph: [APP-D28F9F06] Entering financial_risk_node
+2026-11-04 16:06:48 [INFO] agents.base_agent: [FinancialRiskAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/risk_rules_server.py
 
 
 ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -107,57 +58,14 @@ INFO:     Finished server process [38032]
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 
-[11/03/26 17:11:49] INFO     Starting MCP server 'RiskRulesDB'  transport.py:241
+[11/04/26 16:06:51] INFO     Starting MCP server 'RiskRulesDB'  transport.py:241
                              with transport 'stdio'                             
-  + Exception Group Traceback (most recent call last):
-  |   File "/home/ubuntu/loan_approval_system/mcp_servers/risk_rules_server.py", line 339, in <module>
-  |     mcp.run()
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/fastmcp/server/mixins/transport.py", line 121, in run
-  |     anyio.run(
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_core/_eventloop.py", line 77, in run
-  |     return async_backend.run(func, args, {}, backend_options)
-  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2358, in run
-  |     return runner.run(wrapper())
-  |            ^^^^^^^^^^^^^^^^^^^^^
-  |   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
-  |     return self._loop.run_until_complete(task)
-  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
-  |     return future.result()
-  |            ^^^^^^^^^^^^^^^
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2341, in wrapper
-  |     return await func(*args)
-  |            ^^^^^^^^^^^^^^^^^
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/fastmcp/server/mixins/transport.py", line 94, in run_async
-  |     await self.run_stdio_async(
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/fastmcp/server/mixins/transport.py", line 239, in run_stdio_async
-  |     async with stdio_server() as (read_stream, write_stream):
-  |   File "/usr/lib/python3.12/contextlib.py", line 217, in __aexit__
-  |     await anext(self.gen)
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/mcp/server/stdio.py", line 209, in stdio_server
-  |     async with anyio.create_task_group() as tg:
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 799, in __aexit__
-  |     raise BaseExceptionGroup(
-  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
-  +-+---------------- 1 ----------------
-    | Traceback (most recent call last):
-    |   File "/home/ubuntu/.local/lib/python3.12/site-packages/mcp/server/stdio.py", line 205, in stdout_writer
-    |     await stdout.flush()
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_core/_fileio.py", line 140, in flush
-    |     return await to_thread.run_sync(self._fp.flush)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/to_thread.py", line 63, in run_sync
-    |     return await get_async_backend().run_sync_in_worker_thread(
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
-    |     return await future
-    |            ^^^^^^^^^^^^
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 1002, in run
-    |     result = context.run(func, *args)
-    |              ^^^^^^^^^^^^^^^^^^^^^^^^
-    | BrokenPipeError: [Errno 32] Broken pipe
-    +------------------------------------
+2026-11-04 16:06:55 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:03 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:03 [INFO] agents.base_agent: [FinancialRiskAgent] Agent completed successfully
+2026-11-04 16:07:03 [INFO] orchestrator.graph: [APP-D28F9F06] Risk analysis complete: dti=16.4%
+2026-11-04 16:07:03 [INFO] orchestrator.graph: [APP-D28F9F06] Entering loan_decision_node
+2026-11-04 16:07:04 [INFO] agents.base_agent: [LoanDecisionAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/decision_synthesis_server.py
 
 
 ╭──────────────────────────────────────────────────────────────────────────────╮
@@ -171,7 +79,7 @@ INFO:     Finished server process [38032]
 │                                FastMCP 4.1.5                                 │
 │                            https://gofastmcp.com                             │
 │                                                                              │
-│                  🖥  Server:      RiskRulesDB, 4.1.5                          │
+│                  🖥  Server:      DecisionSynthesis, 4.1.5                    │
 │                  🚀 Deploy free: https://horizon.prefect.io                  │
 │                                                                              │
 ╰──────────────────────────────────────────────────────────────────────────────╯
@@ -181,54 +89,47 @@ INFO:     Finished server process [38032]
 ╰──────────────────────────────────────────────────────────────────────────────╯
 
 
-[11/03/26 17:11:49] INFO     Starting MCP server 'RiskRulesDB'  transport.py:241
-                             with transport 'stdio'                             
-  + Exception Group Traceback (most recent call last):
-  |   File "/home/ubuntu/loan_approval_system/mcp_servers/risk_rules_server.py", line 339, in <module>
-  |     mcp.run()
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/fastmcp/server/mixins/transport.py", line 121, in run
-  |     anyio.run(
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_core/_eventloop.py", line 77, in run
-  |     return async_backend.run(func, args, {}, backend_options)
-  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2358, in run
-  |     return runner.run(wrapper())
-  |            ^^^^^^^^^^^^^^^^^^^^^
-  |   File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
-  |     return self._loop.run_until_complete(task)
-  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |   File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
-  |     return future.result()
-  |            ^^^^^^^^^^^^^^^
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2341, in wrapper
-  |     return await func(*args)
-  |            ^^^^^^^^^^^^^^^^^
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/fastmcp/server/mixins/transport.py", line 94, in run_async
-  |     await self.run_stdio_async(
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/fastmcp/server/mixins/transport.py", line 239, in run_stdio_async
-  |     async with stdio_server() as (read_stream, write_stream):
-  |   File "/usr/lib/python3.12/contextlib.py", line 217, in __aexit__
-  |     await anext(self.gen)
-  |   File "/home/ubuntu/.local/lib/python3.12/site-packages/mcp/server/stdio.py", line 209, in stdio_server
-  |     async with anyio.create_task_group() as tg:
-  |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 799, in __aexit__
-  |     raise BaseExceptionGroup(
-  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
-  +-+---------------- 1 ----------------
-    | Traceback (most recent call last):
-    |   File "/home/ubuntu/.local/lib/python3.12/site-packages/mcp/server/stdio.py", line 205, in stdout_writer
-    |     await stdout.flush()
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_core/_fileio.py", line 140, in flush
-    |     return await to_thread.run_sync(self._fp.flush)
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/to_thread.py", line 63, in run_sync
-    |     return await get_async_backend().run_sync_in_worker_thread(
-    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
-    |     return await future
-    |            ^^^^^^^^^^^^
-    |   File "/usr/local/lib/python3.12/dist-packages/anyio/_backends/_asyncio.py", line 1002, in run
-    |     result = context.run(func, *args)
-    |              ^^^^^^^^^^^^^^^^^^^^^^^^
-    | BrokenPipeError: [Errno 32] Broken pipe
-    +------------------------------------
+[11/04/26 16:07:08] INFO     Starting MCP server                transport.py:241
+                             'DecisionSynthesis' with transport                 
+                             'stdio'                                            
+2026-11-04 16:07:11 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:14 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:16 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:24 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:24 [INFO] agents.base_agent: [LoanDecisionAgent] Agent completed successfully
+2026-11-04 16:07:24 [INFO] orchestrator.graph: [APP-D28F9F06] Decision made: approved (risk_score=8.8)
+2026-11-04 16:07:24 [INFO] orchestrator.graph: [APP-D28F9F06] Entering compliance_node
+2026-11-04 16:07:24 [INFO] agents.base_agent: [ComplianceAgent] Starting agent with server: /home/ubuntu/loan_approval_system/mcp_servers/notification_server.py
+
+
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│                                                                              │
+│                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+│                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+│                                                                              │
+│                                                                              │
+│                                                                              │
+│                                FastMCP 4.1.5                                 │
+│                            https://gofastmcp.com                             │
+│                                                                              │
+│                  🖥  Server:      NotificationSystem, 4.1.5                   │
+│                  🚀 Deploy free: https://horizon.prefect.io                  │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────────────────────╮
+│                          🎉 Update available: 4.1.6                          │
+│                      Run: pip install --upgrade fastmcp                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[11/04/26 16:07:29] INFO     Starting MCP server                transport.py:241
+                             'NotificationSystem' with                          
+                             transport 'stdio'                                  
+2026-11-04 16:07:32 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:39 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:52 [INFO] httpx2: HTTP Request: POST https://llmgw-wp.tekstac.com/v1/messages "HTTP/1.1 200 OK"
+2026-11-04 16:07:52 [INFO] agents.base_agent: [ComplianceAgent] Agent completed successfully
+2026-11-04 16:07:53 [INFO] orchestrator.graph: [APP-D28F9F06] Compliance complete: case_id=LN-GOOD_A-202611041607-60A3F8
+2026-11-04 16:07:53 [INFO] api.main: Application APP-D28F9F06 completed: decision=LoanDecision.APPROVED risk_score=8.8
+2026-11-04 16:07:54 [INFO] api.main: API shutting down
