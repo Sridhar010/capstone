@@ -222,11 +222,6 @@ def _render_decision_card(result: dict) -> None:
         </div>""", unsafe_allow_html=True)
 
     with col3:
-        credit_score = result.get("applicant_profile", {})
-        if isinstance(credit_score, dict):
-            cs = "N/A"
-        else:
-            cs = str(getattr(credit_score, "credit_history_summary", "N/A"))[:20]
         loan_decision = result.get("loan_decision") or {}
         if isinstance(loan_decision, dict):
             rec_amount = loan_decision.get("recommended_loan_amount")
@@ -340,8 +335,7 @@ def _render_dict_as_table(data: dict, title: str) -> None:
 # ── Sidebar ────────────────────────────────────────────────────────────────────
 def _render_sidebar() -> None:
     with st.sidebar:
-        st.image("https://img.icons8.com/fluency/96/bank.png", width=60)
-        st.title("🏦 AI Loan System")
+        st.markdown("## 🏦 AI Loan System")
         st.caption("Powered by Claude Sonnet 4.6 + LangGraph")
         st.divider()
 

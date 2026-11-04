@@ -89,7 +89,7 @@ done
 
 # ── Start Streamlit UI ─────────────────────────────────────────────────────────
 log "Starting Streamlit UI on port 8501..."
-streamlit run ui/app.py \
+python3 -m streamlit run ui/app.py \
     --server.port 8501 \
     --server.address 0.0.0.0 \
     --server.headless true \

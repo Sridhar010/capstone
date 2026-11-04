@@ -24,6 +24,7 @@ class BaseAgent:
     Abstract base for all domain agents.
     Connects to an MCP server via stdio, discovers tools, and drives a
     Claude tool-use loop until the model emits a JSON result block.
+    Uses AsyncAnthropic so the event loop is never blocked.
     """
 
     def __init__(
@@ -35,7 +36,8 @@ class BaseAgent:
         self.mcp_server_script = mcp_server_script
         self.agent_name = agent_name
         self.system_prompt = system_prompt
-        self._client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+        # AsyncAnthropic keeps the FastAPI event loop free during API calls
+        self._client = anthropic.AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
 
     async def run(self, user_prompt: str) -> dict[str, Any]:
         """
@@ -59,7 +61,7 @@ class BaseAgent:
                     logger.info("[%s] Agent completed successfully", self.agent_name)
                     return result
         except Exception as exc:
-            logger.error("[%s] Agent failed with exception: %s", self.agent_name, exc)
+            logger.error("[%s] Agent failed: %s", self.agent_name, exc)
             raise
 
     async def _discover_tools(self, session: ClientSession) -> list[dict]:
@@ -94,13 +96,13 @@ class BaseAgent:
             if tools:
                 create_kwargs["tools"] = tools
 
-            response = self._client.messages.create(**create_kwargs)
+            # Async call — does not block the event loop
+            response = await self._client.messages.create(**create_kwargs)
 
             if response.stop_reason == "end_turn":
                 return self._extract_json_result(response)
 
             if response.stop_reason == "tool_use":
-                # Execute all tool calls and collect results
                 tool_results = []
                 for block in response.content:
                     if block.type == "tool_use":
@@ -113,12 +115,10 @@ class BaseAgent:
                             "content": tool_result_content,
                         })
 
-                # Append assistant turn + tool results to conversation
                 messages.append({"role": "assistant", "content": response.content})
                 messages.append({"role": "user", "content": tool_results})
                 continue
 
-            # Unexpected stop reason — treat as end
             return self._extract_json_result(response)
 
         raise RuntimeError(
@@ -150,7 +150,6 @@ class BaseAgent:
             if hasattr(block, "text"):
                 full_text += block.text
 
-        # Try to extract JSON from a ```json ... ``` code block
         import re
         json_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", full_text, re.DOTALL)
         if json_match:
@@ -159,7 +158,6 @@ class BaseAgent:
             except json.JSONDecodeError:
                 pass
 
-        # Try parsing the whole text as JSON
         stripped = full_text.strip()
         if stripped.startswith("{"):
             try:
@@ -167,7 +165,6 @@ class BaseAgent:
             except json.JSONDecodeError:
                 pass
 
-        # Try last JSON-looking object in the text
         json_objects = re.findall(r"\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}", full_text, re.DOTALL)
         for candidate in reversed(json_objects):
             try:
