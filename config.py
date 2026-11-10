@@ -8,8 +8,7 @@ BASE_DIR = Path(__file__).parent
 
 # ── LLM ────────────────────────────────────────────────────────────────────────
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-# ANTHROPIC_BASE_URL is read automatically by the Anthropic SDK from the env var
-# Set it in .env only if using a custom gateway (e.g. LLM proxy)
+ANTHROPIC_BASE_URL = os.getenv("ANTHROPIC_BASE_URL", "")  # custom gateway (optional)
 LLM_MODEL = os.getenv("LLM_MODEL", "global.anthropic.claude-sonnet-4-6")
 LLM_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "4096"))
 

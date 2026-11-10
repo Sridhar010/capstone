@@ -333,9 +333,12 @@ def _safe_parse_risk(raw: dict) -> Any:
 
 def _safe_parse_decision(raw: dict) -> Any:
     from models.schemas import LoanDecisionResult, LoanDecision
+    # Only parse if we have a real decision — avoids misleading 50/50 defaults
+    if not raw or "classification" not in raw:
+        return None
     try:
         return LoanDecisionResult(
-            classification=LoanDecision(raw.get("classification", "manual_review")),
+            classification=LoanDecision(raw["classification"]),
             risk_score=float(raw.get("risk_score", 50)),
             confidence_level=float(raw.get("confidence_level", 0.5)),
             key_decision_factors=raw.get("key_decision_factors", []),

@@ -143,16 +143,17 @@ def classify_loan_application(
             "summary": f"REJECTED: {hard_rejects[0]}",
         })
 
-    # Automatic approval criteria
+    # Automatic approval — composite risk score is the primary signal.
+    # DTI is already embedded in the composite (20% weight), so we don't
+    # re-check it here except through the hard-reject gate above.
     if (
-        composite_risk_score <= 30
+        composite_risk_score <= 35
         and credit_score >= 700
-        and dti_ratio <= 36
         and anomaly_count == 0
-        and income_stability_score >= 0.70
+        and income_stability_score >= 0.65
     ):
         classification = "approved"
-        reason = "Strong credit profile across all indicators"
+        reason = "Strong composite risk profile — all key indicators within acceptable range"
         return json.dumps({
             "classification": classification,
             "reason": reason,
@@ -164,12 +165,14 @@ def classify_loan_application(
     # Manual review for borderline cases
     classification = "manual_review"
     review_reasons = []
-    if 30 < composite_risk_score <= 60:
-        review_reasons.append(f"Moderate composite risk score ({composite_risk_score:.1f})")
+    if 35 < composite_risk_score <= 60:
+        review_reasons.append(f"Moderate composite risk score ({composite_risk_score:.1f}/100)")
     if 580 <= credit_score < 700:
         review_reasons.append(f"Fair-to-good credit score ({credit_score}) warrants review")
-    if 36 < dti_ratio <= 50:
-        review_reasons.append(f"Elevated DTI ratio ({dti_ratio:.1f}%)")
+    if dti_ratio > 50:
+        review_reasons.append(f"High post-loan DTI ratio ({dti_ratio:.1f}%) — stretched monthly budget")
+    elif 43 < dti_ratio <= 50:
+        review_reasons.append(f"Elevated DTI ratio ({dti_ratio:.1f}%) — above standard threshold")
     if anomaly_count == 1:
         review_reasons.append("One anomaly flagged — manual verification recommended")
     if income_stability_score < 0.60:

@@ -120,6 +120,15 @@ class LoanApplicationResponse(BaseModel):
     key_factors: Optional[List[str]] = None
     explanation: Optional[str] = None
     conditions: Optional[List[str]] = None
+    # Input snapshot — carried through so the Records page can display them
+    loan_amount: Optional[float] = None
+    credit_score: Optional[int] = None
+    annual_income: Optional[float] = None
+    employment_type: Optional[str] = None
+    tenure_months: Optional[int] = None
+    existing_liabilities: Optional[float] = None
+    age: Optional[int] = None
+    location: Optional[str] = None
     applicant_profile: Optional[ApplicantProfileResult] = None
     financial_risk: Optional[FinancialRiskResult] = None
     loan_decision: Optional[LoanDecisionResult] = None

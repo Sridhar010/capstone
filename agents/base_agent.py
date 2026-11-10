@@ -14,7 +14,7 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 sys.path.insert(0, __import__("pathlib").Path(__file__).parent.parent.__str__())
-from config import ANTHROPIC_API_KEY, LLM_MAX_TOKENS, LLM_MODEL
+from config import ANTHROPIC_API_KEY, ANTHROPIC_BASE_URL, LLM_MAX_TOKENS, LLM_MODEL
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +37,10 @@ class BaseAgent:
         self.agent_name = agent_name
         self.system_prompt = system_prompt
         # AsyncAnthropic keeps the FastAPI event loop free during API calls
-        self._client = anthropic.AsyncAnthropic(api_key=ANTHROPIC_API_KEY)
+        client_kwargs: dict = {"api_key": ANTHROPIC_API_KEY}
+        if ANTHROPIC_BASE_URL:
+            client_kwargs["base_url"] = ANTHROPIC_BASE_URL
+        self._client = anthropic.AsyncAnthropic(**client_kwargs)
 
     async def run(self, user_prompt: str) -> dict[str, Any]:
         """
